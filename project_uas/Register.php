@@ -9,6 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
     $email = $_POST["email"];
+    
+    // Menambahkan status dan role default
+    $status = "active"; // Misalnya, status aktif
+    $role = "user"; // Misalnya, peran pengguna
 
     // Contoh validasi sederhana, Anda harus melakukan validasi yang lebih kuat di aplikasi produksi
     if ($password !== $confirm_password) {
@@ -57,13 +61,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="password" class="form-control" name="password" required>
             </div>
             <div class="form-group">
-                <label for="confirm_password">Confirm Password:</label>
-                <input type="password" class="form-control" name="confirm_password" required>
+                <label for="nama">nama</label>
+                <input type="nama" class="form-control" name="nama" required>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" name="email" required>
             </div>
+            <!-- Menambahkan input untuk status dan role -->
+            <input type="hidden" name="status" value="<?php echo $status; ?>">
+            <input type="hidden" name="role" value="<?php echo $role; ?>">
+            
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
