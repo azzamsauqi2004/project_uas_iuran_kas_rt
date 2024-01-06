@@ -16,17 +16,17 @@ CREATE TABLE users (
     )
 
 insert into users (id,username,password,nama,email,status,role)
-VALUES ('12345','Azzam','12345','Azzam Sauqi','azzamsauqi2004@gmail.com','Belum menikah','admin'),
-('678910','Angga','678910','Dafa Alfiana E','dafaerlangga674@gmail.com','Belum Menikah','Editor'),
-('11121314','Hadi','11121314','Hadi Permana','hadipermana123@gmail.com','Belum menikah','author');
+VALUES ('12345','Azzam','12345','Azzam Sauqi','azzamsauqi2004@gmail.com','0','0'),
+('678910','Angga','678910','Dafa Alfiana E','dafaerlangga674@gmail.com','0','0'),
+('11121314','Hadi','11121314','Hadi Permana','hadipermana123@gmail.com','0','0');
 UPDATE users
 SET Role = '1', status = '1'
 WHERE id = '12345';
 UPDATE users
-SET Role = '1', status = '1'
-WHERE id = '45678910';
+SET Role = '1', status = '2'
+WHERE id = '678910';
 UPDATE users
-SET Role = '1', status = '1'
+SET Role = '1', status = '3'
 WHERE id = '11121314';
 DELETE FROM users 
 WHERE username = 'Hadi';
