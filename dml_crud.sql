@@ -12,8 +12,13 @@ CREATE TABLE users (
     `role` TINYINT(1) NULL DEFAULT 2 '1:Admin\n2:User',
     PRIMARY KEY (id)
     UNIQUE INDEX `username_UNIQUE` (`username` ASC)
-    UNIQUE INDEX `email_UNIQUE` (`email` ASC))
+    UNIQUE INDEX `email_UNIQUE` (`email` ASC)
+    )
 
+insert into users (id,username,password,nama,email,status,role)
+VALUES ('12345','Azzam','12345','Azzam Sauqi','azzamsauqi2004@gmail.com','Belum menikah','admin'),
+('678910','Angga','678910','Dafa Alfiana E','dafaerlangga674@gmail.com','Belum Menikah','Editor'),
+('11121314','Hadi','11121314','Hadi Permana','hadipermana123@gmail.com','Belum menikah','author');
 -- Tabel Warga
 CREATE TABLE warga (
 `id` INT NOT NULL AUTO_INCREMENT,
