@@ -1,8 +1,5 @@
 # project_uas_iuran_kas_rt
 
-
-# **UAS Sistem iuran kas rt**
-
 ```
 Matkul   : Pemrograman Web 1
 Dosen    : Agung Nugroho, S.Kom., M.KOM
@@ -29,7 +26,7 @@ Nama Website : ** Iuran Kas RT .**
 - Majemen User/Akun _(Akan segera dikembangkan)_
 
 
-## **Peruntukan Sistem Checklist Iuran Kas RT:**
+## **Peruntukan Sistem Iuran Kas RT:**
 
 Sistem ini lebih ditujukan untuk:
 
