@@ -47,6 +47,18 @@ Sistem ini lebih ditujukan untuk:
 5.    Kegiatan Sosial dan Kebudayaan:
     Mengorganisir acara-acara sosial dan kebudayaan, seperti festival, pertunjukan seni, atau kegiatan yang mempererat ikatan sosial di antara warga masyarakat, dapat menjadi salah satu tujuan dari pengelolaan kas RT.
 
+1. **Mengelola data warga (CRUD):**
+
+   - CRUD (Create, Read, Update, Delete) mengacu pada operasi dasar untuk mengelola data.
+   - **Create:** Menambahkan data baru untuk mendaftarkan toilet baru beserta informasi terkait seperti nama warga, alamat, atau informasi lainnya.
+   - **Read:** Melihat informasi yang sudah terdaftar mengenai warga, seperti daftar warga yang ada.
+   - **Update:** Mengubah atau memperbarui informasi warga yang sudah terdaftar, seperti mengganti alamat atau status.
+   - **Delete:** Menghapus data warga yang tidak diperlukan lagi dari sistem.
+
+
+2. **Tambah, Ubah, dan Hapus Data:**
+
+   - Memberikan fungsionalitas tambah, ubah, dan hapus data , sehingga pengguna dapat memperbarui atau menghapus informasi iuran kas rt.
 
 ## Teknologi yang Digunakan
 
