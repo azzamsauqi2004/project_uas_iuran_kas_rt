@@ -75,7 +75,7 @@ CONSTRAINT `fk_iuran_warga1`
 FOREIGN KEY (`warga_id`)
 REFERENCES `mydb`.`warga` (`id`)
 )
-insert into iuran ('id','tanggal','warga_id','nominal','keterangan','jenis_iuran')
+insert into iuran (id,tanggal,warga_id,nominal,keterangan,jenis_iuran)
 VALUES('12345','2024-01-02','9489504','50000','Lunas','Denda_ronda'),
 ('678910','2024-01-03','1112131415','50000','Lunas','Bayar_kebersihan')
 ('11121314','2024-01-04','2122232425','250000','Belum Lunas','Bayar_keamanan');
