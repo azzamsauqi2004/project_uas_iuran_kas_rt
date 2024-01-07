@@ -50,6 +50,16 @@ CONSTRAINT `fk_warga_users1`
 FOREIGN KEY (`users_id`)
 REFERENCES `mydb`.`users` (`id`)
 ) 
+insert into warga (id,nik,nama,jenis_kelamin,no_hp,alamat,no_rumah,status,user_id)
+VALUES('12345','9489504','Azzam Sauqi','L','08189289','Jeruk_01','05','1088'),
+('678910','1112131415','Dafa Alfiana E','L','085693128836','Jeruk_01','04','1','1067'),
+('11121314','2122232425','Hadi Permana','L','081316439192','Jeruk_01','03','1','1038');
+UPDATE warga
+SET  user_id = '1040', status = '4'
+WHERE id = '11121314';
+DELETE from warga
+WHERE id = '11121314';
+
 
 -- Tabel Iuran
 CREATE TABLE iuran (
@@ -63,4 +73,14 @@ PRIMARY KEY (`id`),
 INDEX `fk_iuran_warga1_idx` (`warga_id` ASC),
 CONSTRAINT `fk_iuran_warga1`
 FOREIGN KEY (`warga_id`)
-REFERENCES `mydb`.`warga` (`id`))
+REFERENCES `mydb`.`warga` (`id`)
+)
+insert into iuran ('id','tanggal','warga_id','nominal','keterangan','jenis_iuran')
+VALUES('12345','2024-01-02','9489504','50000','Lunas','Denda_ronda'),
+('678910','2024-01-03','1112131415','50000','Lunas','Bayar_kebersihan')
+('11121314','2024-01-04','2122232425','250000','Belum Lunas','Bayar_keamanan');
+UPDATE iuran
+SET keterangan = 'Lunas', jenis_iuran = 'Bayar keamanan'
+WHERE id = '11121314';
+DELETE from iuran 
+WHERE id = '11121314';
