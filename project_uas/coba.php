@@ -1,86 +1,37 @@
-<?php
-// Inisialisasi variabel untuk menyimpan pesan kesalahan atau sukses
-$message = "";
-
-// Cek apakah formulir dikirimkan
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Ambil nilai dari formulir
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    // Contoh validasi sederhana, Anda harus melakukan validasi yang lebih kuat di aplikasi produksi
-    if ($username == "user" && $password == "password") {
-        $message = "Login berhasil!";
-    } else {
-        $message = "Login gagal. Silakan coba lagi.";
-    }
-}
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
-    <style>
-        /* Style untuk tampilan yang bersih, Anda dapat menyesuaikan sesuai kebutuhan */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-
-        .login-form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .message {
-            color: red;
-            margin-bottom: 10px;
-        }
-
-        .success {
-            color: green;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="login-form">
-        <h2>Login</h2>
-
-        <!-- Tampilkan pesan kesalahan atau sukses -->
-        <?php if (!empty($message)) : ?>
-            <p class="<?php echo ($message == "Login berhasil!") ? "success" : "message"; ?>"><?php echo $message; ?></p>
-        <?php endif; ?>
-
-        <!-- Formulir login -->
-        <form action="" method="post">
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" name="username" required>
-            </div>
-
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" name="password" required>
-            </div>
-
-            <button type="submit">Login</button>
-        </form>
+<div class="container my-3">
+    <div class="row">
+        <div class="col-8">
+            <h2>Ubah Data</h2>
+            <form method="post" action="/iuran/update/<?= $iuran['id'] ?>">
+                <input type="hidden" name="id" value="<?= $iuran['id'] ?>">
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Tanggal</label>
+                    <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $iuran_warga['tanggal'] ?>" autofocus required>
+                </div>
+                <select class="form-select mb-3" name="jenis_iuran" required>
+                    <option>Jenis Iuran</option>
+                    <?php foreach ($jenis_iuran as $ji) : ?>
+                        <option value="<?= $ji['id'] ?>" <?= ($iuran_warga['jenis_iuran'] == $ji['jenis_iuran']) ? 'selected' : '' ?>><?= $ji['jenis_iuran'] ?></option>
+                    <?php endforeach ?>
+                </select>
+                <select class="form-select mb-3" name="warga_id" required>
+                    <option>Daftar Warga</option>
+                    <?php foreach ($warga as $w) : ?>
+                        <option value="<?= $w['id'] ?>" <?= ($iuran_warga['warga_id'] == $w['id']) ? 'selected' : '' ?>><?= $w['nama'] ?></option>
+                    <?php endforeach ?>
+                </select>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Rp.</span>
+                    <input type="number" class="form-control" name="nominal" value="<?= $iuran_warga['nominal'] ?>">
+                    <span class="input-group-text">.00</span>
+                </div>
+                <div class="mb-3 ">
+                    <label for="keterangan" class="form-label">Keterangan</label>
+                    <textarea class="form-control" id="keterangan" rows="2" name="keterangan" required><?= $iuran_warga['keterangan'] ?></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Ubah Data</button>
+            </form>
+        </div>
     </div>
+</div>
 
-</body>
-
-</html>

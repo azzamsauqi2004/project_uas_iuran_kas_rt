@@ -1,23 +1,35 @@
 <?php
-// Inisialisasi variabel untuk menyimpan pesan kesalahan atau sukses
-$message = "";
 
-// Cek apakah formulir dikirimkan
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Ambil nilai dari formulir
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+session_start();
 
-    // Contoh validasi sederhana, Anda harus melakukan validasi yang lebih kuat di aplikasi produksi
-    if ($username == "user" && $password == "password") {
-        $message = "Login berhasil!";
+$title = 'Data Warga';
+include_once 'koneksi_warga.php';
+
+if (isset($_POST['submit']))
+{
+    $users = $_POST['users'];
+    $password = $_POST['password'];
+
+    $sql = "SELECT * FROM users WHERE username = '{$user}' AND password = ('{$password}') ";
+
+    $result = mysqli_query($koneksi, $sql);
+    if ($result && mysqli_affected_rows($koneksi) != 0)
+    {
+        $_SESSION['isLogin'] = true;
+        $_SESSION['users'] = mysqli_fetch_array($result);
+
+        header('location: index.php');
     } else {
-        $message = "Login gagal. Silakan coba lagi.";
+        $errorMsg = "<p style=\"color:red;\">Gagal Login,
+        silakan ulangi lagi.</p>";
     }
+
+    include_once 'header.php';
+
 }
 ?>
 
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,9 +50,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" class="form-control" name="password" required>
-                
+                <input type="password" class="form-control" name="password" required autocomplete="off">
+
             </div>
+            <p class="text-center">Belum punya akun? <a href="Register.php">Register di sini</a></p>
+            <p class="text-center">
+                <a href="Forgot Password.php">Forgot password</a>
+            </p>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>

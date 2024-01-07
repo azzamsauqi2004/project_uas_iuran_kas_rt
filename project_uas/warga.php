@@ -17,13 +17,13 @@ $result = mysqli_query($koneksi, $sql);
         table{
     width: 100%;
     border-collapse: collapse;
-    margin-top: 4vh;
+    margin-top: 1vh;
 }
 
 th, td{
     border: 1px solid #dddddd;
     text-align: left;
-    padding: 8px;
+    padding: 9px;
 }
 
 th{
@@ -61,6 +61,18 @@ div{
 section{
     margin-top: 10vh;
 }
+
+.container{
+        margin-top: 15vh;
+      }
+      .navbar {
+    background-color: black;
+  }
+
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: white !important;
+  }
     </style>
 </head>
 <body>
@@ -69,7 +81,33 @@ section{
     </head>
 
     <body>
-        
+        <!--nav-bar-->
+<nav class="navbar navbar-expand-lg bg-dark text-white">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="home.php">Beranda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="warga.php">Warga</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="iuran.php">Iuran kas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true"></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--akhir-nav-->
+
     <div class="container">
     <h1 class="text-center">Data warga</h1>
     <div class="main">
@@ -103,9 +141,9 @@ section{
  <td><?= $row['status'];?></td>
  <td><?= $row['user_id'];?></td>
  <td>
-    <button type="button" class="btn btn-warning">Edit</button>
-    <button type="button" class="btn btn-danger">Hapus</button>
- </td>
+    <button type="button" class="btn btn-warning"><a href="ubah_warga.php?id<?= $row["id"];?>">Edit</a></button>
+    <button type="button" class="btn btn-danger""><a href="delete_warga.php?id<?= $row["id"];?>">Hapus</a></button>
+
  
  
  

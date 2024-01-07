@@ -7,15 +7,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ambil nilai dari formulir
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $confirm_password = $_POST["confirm_password"];
+    $nama = $_POST["nama"];
     $email = $_POST["email"];
-    
+    $role = $_POST["role"];
+    $status = $_POST["status"];
     // Menambahkan status dan role default
     $status = "active"; // Misalnya, status aktif
     $role = "user"; // Misalnya, peran pengguna
 
     // Contoh validasi sederhana, Anda harus melakukan validasi yang lebih kuat di aplikasi produksi
-    if ($password !== $confirm_password) {
+    if ($password !== $password) {
         $message = "Konfirmasi password tidak sesuai.";
     } else {
         // Melakukan hashing password sebelum disimpan
@@ -28,6 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Set pesan sukses
         $message = "Registrasi berhasil!";
     }
+
+    
+
+    
 }
 ?>
 
@@ -68,9 +73,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" name="email" required>
             </div>
-            <!-- Menambahkan input untuk status dan role -->
-            <input type="hidden" name="status" value="<?php echo $status; ?>">
-            <input type="hidden" name="role" value="<?php echo $role; ?>">
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <input type="role" class="form-control" name="role" required>
+            </div>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <input type="status" class="form-control" name="status" required>
+            </div>
+
+           
+           
             
             <button type="submit" class="btn btn-primary">Register</button>
         </form>

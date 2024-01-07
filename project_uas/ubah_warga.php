@@ -2,39 +2,42 @@
 error_reporting(E_ALL);
 include_once 'koneksi_warga.php';
 
-if (isset($_POST['submit']))
-{
-    $id = $_POST['id'];   
-    $nik = $_POST['nik'];   
-    $nama = $_POST['nama'];   
-    $jenis_kelamin = $_POST['jenis_kelamin']; 
-    $no_hp = $_POST['no_hp'];  
-    $alamat = $_POST['alamat']; 
-    $no_rumah = $_POST['no_rumah'];    
+if (isset($_POST['submit'])) {
+    $id = $_POST['id'];
+    $nik = $_POST['nik'];
+    $nama = $_POST['nama'];
+    $jenis_kelamin = $_POST['jenis_kelamin'];
+    $no_hp = $_POST['no_hp'];
+    $alamat = $_POST['alamat'];
+    $no_rumah = $_POST['no_rumah'];
     $status = $_POST['status'];
     $user_id = $_POST['user_id'];
 
-    $sql ='UPDATE warga SET';
-    $sql =  $sql = "id = '{$id}', nik = '{$nik}',";
-    $sql = "nama = '{$nama}', jenis_kelamin= '{$jenis_kelamin}',  no_hp ='{$no_hp}'";  
-    $sql = "alamat = '{$alamat}', no_rumah= '{$no_rumah}',  status ='{$status}', user_id='{$user_id}'";  
+    $sql = "UPDATE warga SET";
+    $sql .= " id = '{$id}', nik = '{$nik}',";
+    $sql .= " nama = '{$nama}', jenis_kelamin = '{$jenis_kelamin}', no_hp = '{$no_hp}',";
+    $sql .= " alamat = '{$alamat}', no_rumah = '{$no_rumah}', status = '{$status}', user_id = '{$user_id}'";
+    $sql .= " WHERE id = '{$id}'";
+
+    $result = mysqli_query($koneksi, $sql);
 
     header('location: warga.php');
-
 }
 
-$id = $_GET['id'];
-$sql = "SELECT * FROM warga WHERE warga = ''";
-$result = mysqli_query($koneksi,$sql);
- 
+$id = $_GET['?'];
+$sql = "SELECT * FROM warga";
+$result = mysqli_query($koneksi, $sql);
+
 if (!$result) die('Error: data tidak tersedia');
 $data = mysqli_fetch_array($result);
 
-function is_select($var, $val){
-    if($var == $val) return 'selected="selected"';
+function is_select($var, $val) {
+    if ($var == $val) return 'selected="selected"';
     return false;
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +45,29 @@ function is_select($var, $val){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+       body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #4CAF50; /* Warna hijau */
+            margin: 0;
+        }
+        .container {
+            width: 400px;
+            background-color: #ffffff; /* Warna putih */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+        }
+        .form-heading {
+            text-align: center;
+            color: #4CAF50; /* Warna hijau */
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -77,7 +103,7 @@ function is_select($var, $val){
                 </div>
                 <div class="input">
                     <label>no_rumah</label>
-                    <input type="text" name="nama" value="<?php echo $data['no_rumah'];?>">
+                    <input type="text" name="no_rumah" value="<?php echo $data['no_rumah'];?>">
                 </div>
                 <div class="input">
                     <label>status</label>
@@ -95,7 +121,7 @@ function is_select($var, $val){
                     <input type="text" name="user_id" value="<?php echo $data['user_id'];?>">
                 </div>
                 <div class="submit">
-                        <input type="hidden" name="id" value=" <?php echo $data['id_warga']; ?>"/>
+                        <input type="hidden" name="id" value=" <?php echo $data['id']; ?>"/>
                         <input type="submit" name="submit" value="simpan"/>
                     </div>
             </form>

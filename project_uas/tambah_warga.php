@@ -2,41 +2,40 @@
 error_reporting(E_ALL);
 include_once 'koneksi_warga.php';
 
-if (isset($_POST['submit']))
-{
-    $id = $_POST['id'];   
-    $nik = $_POST['nik'];   
-    $nama = $_POST['nama'];   
-    $jenis_kelamin = $_POST['jenis_kelamin']; 
-    $no_hp = $_POST['no_hp'];  
-    $alamat = $_POST['alamat']; 
-    $no_rumah = $_POST['no_rumah'];    
+if (isset($_POST['submit'])) {
+    $id = $_POST['id'];
+    $nik = $_POST['nik'];
+    $nama = $_POST['nama'];
+    $jenis_kelamin = $_POST['jenis_kelamin'];
+    $no_hp = $_POST['no_hp'];
+    $alamat = $_POST['alamat'];
+    $no_rumah = $_POST['no_rumah'];
     $status = $_POST['status'];
     $user_id = $_POST['user_id'];
 
-    $sql = 'INSERT INTO warga (id, nik, nama, jenis_kelamin, no_hp, alamat, no_rumah, status, user_id)';
+    // Modifikasi query SQL
+    $sql = "INSERT INTO warga (id, nik, nama, jenis_kelamin, no_hp, alamat, no_rumah, status, user_id)";
+    $sql .= " VALUES ('{$id}', '{$nik}','{$nama}', '{$jenis_kelamin}', '{$no_hp}','{$alamat}', '{$no_rumah}', '{$status}', '{$user_id}')";
 
-
-    
-
-    $sql .= "VALUES ('{$id}', '{$nik}','{$nama}',
-    '{$jenis_kelamin}', '{$no_hp}','{$alamat}', '{$no_rumah}', '{$status}', '{$user_id}')";
     $result = mysqli_query($koneksi, $sql);
-    header('location: warga.php');
 
     if ($result) {
         // Kueri berhasil dieksekusi
-        header('location: warga.php');
+        echo"
+        <script>
+        alert('Data berhasil ditambahkan');
+        document.location.href = 'warga.php'
+        </script>
+        
+        ";
+        
     } else {
         // Eksekusi kueri gagal
         echo "Error: " . mysqli_error($koneksi);
-    }    
-
-
+    }
 }
-
-
 ?>
+
 
 <html>
     <head></head>
