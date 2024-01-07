@@ -51,7 +51,7 @@ FOREIGN KEY (`users_id`)
 REFERENCES `mydb`.`users` (`id`)
 ) 
 insert into warga (id,nik,nama,jenis_kelamin,no_hp,alamat,no_rumah,status,user_id)
-VALUES('12345','9489504','Azzam Sauqi','L','08189289','Jeruk_01','05','1088'),
+VALUES('12345','9489504','Azzam Sauqi','L','08189289','Jeruk_01','05','1','1088'),
 ('678910','1112131415','Dafa Alfiana E','L','085693128836','Jeruk_01','04','1','1067'),
 ('11121314','2122232425','Hadi Permana','L','081316439192','Jeruk_01','03','1','1038');
 UPDATE warga
